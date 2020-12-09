@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         Cat murzik = new Cat();
         murzik.name = "Мурзик";
         murzik.age = 9;
-        murzik.color = Color.BLACK;
+        murzik.color = Color.YELLOW;
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
         String jsonText = "{\"name\":\"Барсик\",\"color\":-16777216,\"age\":7}";
         Cat barsik = gson.fromJson(jsonText, Cat.class);
-        tx.setText("Имя: " + barsik.name + "\nВозраст: " + barsik.age);
+        tx.setText("Имя: " + barsik.name + " Возраст: " + barsik.age + " Цвет: ");
+        View cat_color = findViewById(R.id.view);
+        cat_color.setBackgroundColor(barsik.color);
     }
 }
