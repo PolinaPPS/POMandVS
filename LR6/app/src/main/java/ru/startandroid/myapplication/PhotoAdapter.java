@@ -10,11 +10,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
+import ru.startandroid.myapplication.model.Photo;
+
 public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoHolder> {
+
+    private List<Photo> photoList;
 
     TextView text;
     ImageView photo;
     Context context;
+
+    public PhotoAdapter(List<Photo> list, Context con) {
+        photoList = list;
+        context = con;
+    }
 
     public class PhotoHolder extends RecyclerView.ViewHolder{
         public PhotoHolder (View item) {
@@ -34,11 +47,16 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoHolder>
 
     @Override
     public void onBindViewHolder(@NonNull PhotoAdapter.PhotoHolder holder, int position) {
-
+        String photoName = photoList.get(position).getOwner();
+        text.setText(photoName);
+        Picasso
+                .with(context)
+                .load(photoList.get(position).getUrlS())
+                .into(photo);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return photoList.size();
     }
 }
