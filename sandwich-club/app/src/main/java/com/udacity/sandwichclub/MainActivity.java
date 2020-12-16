@@ -37,7 +37,11 @@ public class MainActivity extends AppCompatActivity {
         {
             String json = sandList[i];
             Sandwich sandwich = null;
-            sandwich = JsonUtils.parseSandwichJson(json);
+            try {
+                sandwich = JsonUtils.parseSandwichJson(json);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             SandwichList.add(sandwich);
         }
 
