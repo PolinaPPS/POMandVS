@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import ru.startandroid.myapplication.db.PhotosDao;
 import ru.startandroid.myapplication.model.Photo;
 
 public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoHolder> {
@@ -23,10 +24,14 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoHolder>
     private TextView text;
     private ImageView photo;
     Context context;
+    PhotosDao dao;
+    RecyclerView rv;
 
-    public PhotoAdapter(List<Photo> list, Context con) {
+    public PhotoAdapter(List<Photo> list, Context con, PhotosDao phdao, RecyclerView rview) {
         photoList = list;
         this.context = con;
+        dao = phdao;
+        rv = rview;
     }
 
     public class PhotoHolder extends RecyclerView.ViewHolder{
@@ -34,6 +39,14 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoHolder>
             super(item);
             text = item.findViewById(R.id.textView);
             photo = item.findViewById(R.id.imageView);
+            item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int item = rv.getChildLayoutPosition(v);
+                    Photo photo = photoList.get(item);
+                    dao.insertPhoto(photo);
+                }
+            });
         }
     }
     @NonNull
