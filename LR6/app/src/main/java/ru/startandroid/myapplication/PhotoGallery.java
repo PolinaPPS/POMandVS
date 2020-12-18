@@ -99,4 +99,13 @@ public class PhotoGallery extends AppCompatActivity {
         });
         return super.onCreateOptionsMenu(menu);
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        photo = dao.LoadAll();
+        adapter = new PhotoAdapter(photo,context,dao,rv);
+        rv.setAdapter(adapter);
+        return super.onOptionsItemSelected(item);
+    }
 }

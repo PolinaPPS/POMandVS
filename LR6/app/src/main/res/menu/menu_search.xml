@@ -9,6 +9,10 @@
         app:showAsAction = "always"></item>
     <item
         android:id = "@+id/LocalDB"
-        android:orderInCategory="2"
+        android:orderInCategory="1"
         android:title="Local DB"/>
+    <item
+        android:id = "@+id/InternetDB"
+        android:orderInCategory="2"
+        android:title="Internet DB"/>
 </menu>
