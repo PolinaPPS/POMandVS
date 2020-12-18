@@ -14,13 +14,13 @@ public class Photo {
     private String server;
     private Integer farm;
     private String title;
-    private String urlS;
+    public String url_s;
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 
@@ -64,11 +64,11 @@ public class Photo {
         this.title = title;
     }
 
-    public String getUrlS() {
-        return urlS;
+    public String getUrl_s() {
+        return url_s;
     }
 
-    public void setUrlS(String urlS) {
-        this.urlS = urlS;
+    public void setUrl_s(String url_s) {
+        this.url_s = url_s;
     }
 }

@@ -20,13 +20,13 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoHolder>
 
     private List<Photo> photoList;
 
-    TextView text;
-    ImageView photo;
+    private TextView text;
+    private ImageView photo;
     Context context;
 
     public PhotoAdapter(List<Photo> list, Context con) {
         photoList = list;
-        context = con;
+        this.context = con;
     }
 
     public class PhotoHolder extends RecyclerView.ViewHolder{
@@ -48,11 +48,9 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoHolder>
     @Override
     public void onBindViewHolder(@NonNull PhotoAdapter.PhotoHolder holder, int position) {
         String photoName = photoList.get(position).getOwner();
+       // String photoName = photoList.get(position).getUrl_s();
         text.setText(photoName);
-        Picasso
-                .with(context)
-                .load(photoList.get(position).getUrlS())
-                .into(photo);
+        Picasso.with(context).load(photoList.get(position).getUrl_s()).into(photo);
     }
 
     @Override

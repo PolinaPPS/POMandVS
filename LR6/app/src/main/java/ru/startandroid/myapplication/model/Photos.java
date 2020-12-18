@@ -1,5 +1,4 @@
 package ru.startandroid.myapplication.model;
-
 import java.util.List;
 
 public class Photos {

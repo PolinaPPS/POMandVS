@@ -23,6 +23,5 @@ public class ServiceAPI {
             return retrofit;
         }
         return retrofit;
-
     }
 }
